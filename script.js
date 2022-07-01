@@ -85,8 +85,8 @@ const checkColumn = (board, column, value) => {
 }
 
 const checkSquare = (board, row, column, value) => {
-    boxRow = Math.floor(row/3)*3;
-    boxCol = Math.floor(column/3)*3;
+    let boxRow = Math.floor(row/3)*3;
+    let boxCol = Math.floor(column/3)*3;
     
     for (var r = 0; r < 3; r++){
         for (var c = 0; c < 3; c++){
@@ -132,8 +132,8 @@ const solve = () => {
 } 
 
 const getSolve = () => {
-    const solution = solve()
-    const linearSoluiton = []
+    let solution = solve()
+    let linearSoluiton = []
     for (row of solution) for (e of row) linearSoluiton.push(e);
     populateValues(linearSoluiton)
 }
