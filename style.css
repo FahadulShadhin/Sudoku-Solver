@@ -12,6 +12,16 @@
     text-transform: uppercase;
 }
 
+.instruction {
+    font-size: 20px;
+    color: #1B4F72;
+}
+
+.italic {
+    /* font-style: italic; */
+    font-weight: bold;
+}
+
 .sudoku-solver {
     margin: auto;
     width: 50%;
@@ -52,7 +62,7 @@
     display: inline-block;
     font-size: 18px;
     letter-spacing: 1px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     cursor: pointer;
 }
 

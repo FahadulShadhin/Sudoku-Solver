@@ -103,7 +103,6 @@ const checkValue = (board, row, column, value) => {
       checkSquare(board, row, column, value)) {
         return true;
     }
-    
     return false; 
 };
 
@@ -119,7 +118,7 @@ const solve = () => {
     }
 
     for(let num = 1; num<=9; num++){
-        if (checkValue(board, row, col, num)){
+        if (checkValue(board, row, col, num)) {
             board[row][col] = num
             solve()
         }
@@ -128,11 +127,13 @@ const solve = () => {
     if (findEmptyIndex(board)[0] !== -1) {
         board[row][col] = 0
     }
+
+    return board
 } 
 
 const getSolve = () => {
-    solve()
-    const flatboard = []
-    for (row of board) for (e of row) flatboard.push(e);
-    populateValues(flatboard)
+    const solution = solve()
+    const linearSoluiton = []
+    for (row of solution) for (e of row) linearSoluiton.push(e);
+    populateValues(linearSoluiton)
 }
