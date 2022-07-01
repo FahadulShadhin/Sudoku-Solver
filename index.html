@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="puzzle" class="puzzle"></div>
-    <button id="solve-button" class="solve-button">Solve</button>
+    <div class="sudoku-solver">
+        <h1 class="intro">Sudoku Solver</h1>
+        <div id="puzzle" class="puzzle"></div>
+        <button id="solve-button" class="solve-button" onclick="getSolve()">Solve</button>
+        <button id="reset-button" class="reset-button" onclick="clearValues()">Clear</button>
+    </div>
     
     <script src="script.js"></script>
 </body>

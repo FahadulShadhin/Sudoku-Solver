@@ -5,13 +5,76 @@
     border-spacing: 0;
 }
 
+.intro {
+    color: #1B4F72;
+    font-size: 35px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sudoku-solver {
+    margin: auto;
+    width: 50%;
+}
+
 .puzzle {
     width: 450px;
     height: 450px;
 }
 
-.puzzle input {
+/* .puzzle input {
     width: 50px;
     height: 50px;
     border: 1px #808080 solid;
+} */
+
+.odd-section {
+    background: #d3d3d3;
+}
+
+.puzzle input {
+    text-align: center;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    border: 1px #808080 solid;
+}
+
+.solve-button, .reset-button {
+    margin-top: 20px;
+    background-color: #1B4F72;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.reset-button {
+    margin-left: 20px;
+}
+
+.solve-button:hover, .reset-button:hover {
+    background-color: #568caf;
+}
+
+
+
+/* Hide arrows from input field  */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
