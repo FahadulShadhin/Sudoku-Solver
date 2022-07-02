@@ -63,7 +63,7 @@ html {
     color: #bd1c1c;
 }
 
-.solve-button, .reset-button {
+.solve-button, .clear-button {
     margin-top: 20px;
     background-color: #1B4F72;
     border: none;
@@ -79,11 +79,11 @@ html {
     cursor: pointer;
 }
 
-.reset-button {
+.clear-button {
     margin-left: 15px;
 }
 
-.solve-button:hover, .reset-button:hover {
+.solve-button:hover, .claer-button:hover {
     background-color: #568caf;
 }
 

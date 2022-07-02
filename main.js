@@ -1,6 +1,6 @@
 const sudokuBoard = document.querySelector("#puzzle")
 const solveButton = document.querySelector("#solve-button")
-const reloadButton = document.querySelector("#reset-button")
+const clearButton = document.querySelector("#clear-button")
 const squares = 81
 let board = []
 
@@ -125,6 +125,6 @@ solveButton.addEventListener('click', () => {
     populateValues(board)
 })
 
-reloadButton.addEventListener('click', () => {
+clearButton.addEventListener('click', () => {
     window.location.reload(true)
 })
