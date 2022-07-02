@@ -41,6 +41,7 @@ const insertValues = () => {
     }
 }
 
+
 const populateValues = (b) => {
     const inputs = document.querySelectorAll('input')
     inputs.forEach((input, i) => {
@@ -97,7 +98,7 @@ const checkSquare = (board, row, column, value) => {
     return true;
 }
 
-const checkValue = (board, row, column, value) => {
+const isPossible = (board, row, column, value) => {
     if(checkRow(board, row, value) &&
       checkColumn(board, column, value) &&
       checkSquare(board, row, column, value)) {
@@ -118,7 +119,7 @@ const solve = () => {
     }
 
     for(let num = 1; num<=9; num++){
-        if (checkValue(board, row, col, num)) {
+        if (isPossible(board, row, col, num)) {
             board[row][col] = num
             solve()
         }

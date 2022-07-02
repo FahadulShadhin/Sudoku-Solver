@@ -10,7 +10,6 @@ const board = [
     [0, 0, 8, 5, 3, 4, 2, 9, 0]
 ];
 
-
 // console.log(board)
 
 const findEmptyIndex = (board) => {
