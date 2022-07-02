@@ -59,8 +59,12 @@ html {
     border: 1px #808080 solid;
 }
 
-.input-el {
-    color: #bd1c1c;
+/* .input-el {
+    color: #0000ff;
+} */
+
+.empty-el {
+    color: #4848d4;
 }
 
 .solve-button, .clear-button {

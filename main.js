@@ -34,6 +34,7 @@ const insertValues = () => {
             input.classList.add('input-el') 
         } else {
             board.push(0)
+            input.classList.add('empty-el')
         }
     })
 }
@@ -69,6 +70,7 @@ const acceptable = (board, index, value) => {
 
     let r1 = Math.floor(row / 3) * 3;
     let c1 = Math.floor(col / 3) * 3;
+
     for (let r = r1; r < r1 + 3; ++r) {
         for (let c = c1; c < c1 + 3; ++c) {
             if (board[rc2i(r, c)] == value) return false;
@@ -81,6 +83,7 @@ const acceptable = (board, index, value) => {
 
 const getChoices = (board, index) => {
     let choices = [];
+
     for (let value = 1; value <= 9; ++value) {
         if (acceptable(board, index, value)) {
             choices.push(value);
@@ -92,9 +95,11 @@ const getChoices = (board, index) => {
 
 const bestBet = (board) => {
     let index, moves, bestLen = 100;
+
     for (let i = 0; i < 81; ++i) {
         if (!board[i]) {
             let m = getChoices(board, i);
+
             if (m.length < bestLen) {
                 bestLen = m.length;
                 moves = m;
