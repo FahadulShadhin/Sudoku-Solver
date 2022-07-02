@@ -3,6 +3,7 @@ const solveButton = document.querySelector("#solve-button")
 const squares = 81
 let board = []
 
+
 for (let i=0; i<squares; i++) {
     const inputElement = document.createElement("input")
     inputElement.setAttribute('type', 'number')
