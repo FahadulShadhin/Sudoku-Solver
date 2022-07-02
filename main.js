@@ -22,25 +22,20 @@ for (let i=0; i<squares; i++) {
     }
 
     sudokuBoard.appendChild(inputElement)
-    // inputElement.classList.add('input-el')
 }
 
 
 const insertValues = () => {
-    let temp = []
     const inputs = document.querySelectorAll('input')
 
     inputs.forEach((input) => {
         if(input.value) {
-            temp.push(parseInt(input.value))
+            board.push(parseInt(input.value))
+            input.classList.add('input-el') 
         } else {
-            temp.push(0)
+            board.push(0)
         }
     })
-
-    while(temp.length) {
-        board.push(temp.splice(0, 9))
-    }
 }
 
 
@@ -52,93 +47,84 @@ const populateValues = (b) => {
 }
 
 
-const findEmptyIndex = (board) => {
-    for (var i = 0; i < 9; i++) {
-        for (var j = 0; j < 9; j++) {
-            if (board[i][j] === 0) {
-                return [i, j]
+// solver starts 
+const i2rc = (index) => {
+    return { row: Math.floor(index / 9), col: index % 9 };
+}
+
+
+const rc2i = (row, col) => {
+    return row * 9 + col;
+}
+
+
+const acceptable = (board, index, value) => {
+    let { row, col } = i2rc(index);
+
+    for (let r = 0; r < 9; ++r)
+        if (board[rc2i(r, col)] == value) return false;
+
+    for (let c = 0; c < 9; ++c)
+        if (board[rc2i(row, c)] == value) return false;
+
+    let r1 = Math.floor(row / 3) * 3;
+    let c1 = Math.floor(col / 3) * 3;
+    for (let r = r1; r < r1 + 3; ++r) {
+        for (let c = c1; c < c1 + 3; ++c) {
+            if (board[rc2i(r, c)] == value) return false;
+        }
+    }
+
+    return true;
+}
+
+
+const getChoices = (board, index) => {
+    let choices = [];
+    for (let value = 1; value <= 9; ++value) {
+        if (acceptable(board, index, value)) {
+            choices.push(value);
+        }
+    }
+    return choices;
+}
+
+
+const bestBet = (board) => {
+    let index, moves, bestLen = 100;
+    for (let i = 0; i < 81; ++i) {
+        if (!board[i]) {
+            let m = getChoices(board, i);
+            if (m.length < bestLen) {
+                bestLen = m.length;
+                moves = m;
+                index = i;
+                if (bestLen == 0) break;
             }
         }
     }
-    return [-1, -1]
+    return { index, moves };
 }
 
-const checkRow = (board, row, value) => {
-    for(var i = 0; i < board[row].length; i++) {
-        if(board[row][i] === value) {
-            return false;
-        }
+
+const solve = () => {
+    let { index, moves } = bestBet(board);    
+    if (index == null) return true;           
+    for (let m of moves) {
+        board[index] = m;                     
+        if (solve()) return true;            
     }
-    return true;
+    board[index] = 0;
+    return false;
 }
-
-const checkColumn = (board, column, value) => {
-    for(var i = 0; i < board.length; i++) {
-        if(board[i][column] === value) {
-            return false;
-        }
-    }
-    return true;
-}
-
-const checkSquare = (board, row, column, value) => {
-    let boxRow = Math.floor(row/3)*3;
-    let boxCol = Math.floor(column/3)*3;
-    
-    for (var r = 0; r < 3; r++){
-        for (var c = 0; c < 3; c++){
-            if (board[boxRow + r][boxCol + c] === value)
-                return false;
-        }
-    }
-    return true;
-}
-
-const isPossible = (board, row, column, value) => {
-    if(checkRow(board, row, value) &&
-      checkColumn(board, column, value) &&
-      checkSquare(board, row, column, value)) {
-        return true;
-    }
-    return false; 
-};
-
-const solve = () => {  
-    insertValues()
-
-    let emptySpot = findEmptyIndex(board);
-    let row = emptySpot[0]
-    let col = emptySpot[1]
-
-    if (row === -1){
-        return board
-    }
-
-    for(let num = 1; num<=9; num++){
-        if (isPossible(board, row, col, num)) {
-            board[row][col] = num
-            solve()
-        }
-    }
-
-    if (findEmptyIndex(board)[0] !== -1) {
-        board[row][col] = 0
-    }
-
-    return board
-} 
-
-const getSolve = () => {
-    let solution = solve()
-    let linearSoluiton = []
-    for (row of solution) for (e of row) linearSoluiton.push(e);
-    populateValues(linearSoluiton)
-}
+// solver ends 
 
 solveButton.addEventListener('click', () => {
-    getSolve()
+    insertValues()
+    solve()
+    populateValues(board)
 })
 
 reloadButton.addEventListener('click', () => {
-    location.reload(true);
+    window.location.reload(true)
 })

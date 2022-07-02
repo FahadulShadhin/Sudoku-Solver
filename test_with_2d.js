@@ -76,6 +76,7 @@ const solve = (board) => {
     for(let num = 1; num<=9; num++){
         if (checkValue(board, row, col, num)){
             board[row][col] = num;
+            // console.log(board)
             solve(board);
         }
     }
@@ -85,6 +86,6 @@ const solve = (board) => {
 
     return board;
 }
-
+// solve(board)
 // console.log(findEmptyIndex(board))
 console.log(solve(board))

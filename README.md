@@ -7,3 +7,7 @@
 
 ## See the solution:
 <img src="files/images/ss-02.png" width="700" height="500">
+
+## Things to improve:
+* Backtracking algorithm struggles with hard puzzles
+* Invalid input causes crash
