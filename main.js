@@ -1,5 +1,6 @@
 const sudokuBoard = document.querySelector("#puzzle")
 const solveButton = document.querySelector("#solve-button")
+const reloadButton = document.querySelector("#reset-button")
 const squares = 81
 let board = []
 
@@ -50,12 +51,6 @@ const populateValues = (b) => {
     })
 }
 
-const clearValues = () => {
-    const inputs = document.querySelectorAll('input')
-    inputs.forEach((input) => {
-        input.value = ""
-    })
-}
 
 const findEmptyIndex = (board) => {
     for (var i = 0; i < 9; i++) {
@@ -139,3 +134,11 @@ const getSolve = () => {
     for (row of solution) for (e of row) linearSoluiton.push(e);
     populateValues(linearSoluiton)
 }
+
+solveButton.addEventListener('click', () => {
+    getSolve()
+})
+
+reloadButton.addEventListener('click', () => {
+    location.reload(true);
+})
