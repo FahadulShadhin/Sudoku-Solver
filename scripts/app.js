@@ -10,22 +10,19 @@ let board = []
 //     return randNum
 // }
 
-// loadRandomBoard = () => {
-//     const inputs = document.querySelectorAll('input')
-//     let savedBoard = []
+loadRandomBoard = () => {
+    const inputs = document.querySelectorAll('input')
+    let savedBoard = boards["1"]
 
-//     if(getRandomIndex() == 0) savedBoard = boards["0"]
-//     else if(getRandomIndex() == 1) savedBoard = boards["1"]
-
-//     for(let i=0; i<savedBoard.length; i++) {
-//         if(savedBoard[i] == 0) {
-//             inputs[i].value = ""
-//         } else {
-//             inputs[i].value = savedBoard[i]
-//         }
-//     }
-//     savedBoard = []
-// }
+    for(let i=0; i<savedBoard.length; i++) {
+        if(savedBoard[i] == 0) {
+            inputs[i].value = ""
+        } else {
+            inputs[i].value = savedBoard[i]
+        }
+    }
+    savedBoard = []
+}
 
 insertValues = () => {
     const inputs = document.querySelectorAll('input')
@@ -58,6 +55,6 @@ clearButton.addEventListener('click', () => {
     window.location.reload(true)
 })
 
-// loadButton.addEventListener('click', () => {
-//     loadRandomBoard()
-// })
+loadButton.addEventListener('click', () => {
+    loadRandomBoard()
+})
