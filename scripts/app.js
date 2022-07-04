@@ -1,6 +1,31 @@
 const solveButton = document.querySelector("#solve-button")
 const clearButton = document.querySelector("#clear-button")
+const loadButton = document.querySelector('#load-button')
 let board = []
+
+// const getRandomIndex = () => {
+//     maxLimit = 2
+//     let rand = Math.random() * maxLimit;
+//     randNum = Math.floor(rand)
+//     return randNum
+// }
+
+// loadRandomBoard = () => {
+//     const inputs = document.querySelectorAll('input')
+//     let savedBoard = []
+
+//     if(getRandomIndex() == 0) savedBoard = boards["0"]
+//     else if(getRandomIndex() == 1) savedBoard = boards["1"]
+
+//     for(let i=0; i<savedBoard.length; i++) {
+//         if(savedBoard[i] == 0) {
+//             inputs[i].value = ""
+//         } else {
+//             inputs[i].value = savedBoard[i]
+//         }
+//     }
+//     savedBoard = []
+// }
 
 insertValues = () => {
     const inputs = document.querySelectorAll('input')
@@ -32,3 +57,7 @@ solveButton.addEventListener('click', () => {
 clearButton.addEventListener('click', () => {
     window.location.reload(true)
 })
+
+// loadButton.addEventListener('click', () => {
+//     loadRandomBoard()
+// })

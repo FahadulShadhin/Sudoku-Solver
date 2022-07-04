@@ -59,15 +59,11 @@ html {
     border: 1px #808080 solid;
 }
 
-/* .input-el {
-    color: #0000ff;
-} */
-
 .empty-el {
     color: #4848d4;
 }
 
-.solve-button, .clear-button {
+.solve-button, .clear-button, .load-button {
     margin-top: 20px;
     background-color: #1B4F72;
     border: none;
@@ -83,11 +79,11 @@ html {
     cursor: pointer;
 }
 
-.clear-button {
+.clear-button, .load-button {
     margin-left: 15px;
 }
 
-.solve-button:hover, .clear-button:hover {
+.solve-button:hover, .clear-button:hover, .load-button:hover {
     background-color: #568caf;
 }
 
