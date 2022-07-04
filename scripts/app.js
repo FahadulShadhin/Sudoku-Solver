@@ -16,7 +16,7 @@ loadRandomBoard = () => {
 
     for(let i=0; i<savedBoard.length; i++) {
         if(savedBoard[i] == 0) {
-            inputs[i].value = ""
+             inputs[i].value = ""
         } else {
             inputs[i].value = savedBoard[i]
         }
@@ -40,21 +40,15 @@ insertValues = () => {
 
 populateValues = () => {
     const inputs = document.querySelectorAll('input')
-    inputs.forEach((input, i) => {
-        input.value = board[i]
-    })
+    inputs.forEach((input, i) => input.value = board[i])
 }
 
-solveButton.addEventListener('click', () => {
+main = () => {
     insertValues()
     solve()
     populateValues()
-})
+}
 
-clearButton.addEventListener('click', () => {
-    window.location.reload(true)
-})
-
-loadButton.addEventListener('click', () => {
-    loadRandomBoard()
-})
+solveButton.addEventListener('click', () => main())
+clearButton.addEventListener('click', () => window.location.reload(true))
+loadButton.addEventListener('click', () => loadRandomBoard())
