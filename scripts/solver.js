@@ -1,5 +1,21 @@
+let board = []
+
+export function insertValues() {
+    const inputs = document.querySelectorAll('input')
+    
+    inputs.forEach((input) => {
+        if(input.value) {
+            board.push(parseInt(input.value))
+            input.classList.add('input-el') 
+        } else {
+            board.push(0)
+            input.classList.add('empty-el')
+        }
+    })
+}
+
 const i2rc = (index) => { 
-    return {row: Math.floor(index/9), col: index % 9} 
+    return {row: Math.floor(index/9), col: index%9} 
 }
 const rc2i = (row, col) => (row * 9 + col)
 
@@ -48,7 +64,7 @@ const bestBet = (board) => {
     return { index, moves }
 }
 
-const solve = () => {
+export const solve = () => {
     let { index, moves } = bestBet(board) 
     if (index == null) return true          
     for (let m of moves) {
@@ -57,4 +73,9 @@ const solve = () => {
     }
     board[index] = 0
     return false
+}
+
+export function populateValues() {
+    const inputs = document.querySelectorAll('input')
+    inputs.forEach((input, i) => input.value = board[i])
 }
