@@ -13,7 +13,8 @@ function main() {
         if(solve()) {
             populateValues()
         } else {
-            console.log("cannot")
+            // console.log("cannot")
+            alert("Can't solve this puzzle!")
         }
     })
     clearButton.addEventListener('click', () => window.location.reload(true))

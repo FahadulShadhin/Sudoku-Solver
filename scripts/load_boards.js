@@ -5,7 +5,7 @@ const boards = {
 
 export function loadRandomBoard() {
     const inputs = document.querySelectorAll('input')
-    let savedBoard = boards["0"]
+    let savedBoard = boards["1"]
     
     for(let i=0; i<savedBoard.length; i++) {
         if(savedBoard[i] == 0) {
