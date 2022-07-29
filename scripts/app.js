@@ -13,7 +13,6 @@ function main() {
         if(solve()) {
             populateValues()
         } else {
-            // console.log("cannot")
             alert("Can't solve this puzzle!")
         }
     })

@@ -12,5 +12,4 @@ Sudoku puzzle solver using backtracking technique.\
 
 ## Todos:
 * Show appropriate message on invalid input
-* Load multiple boards
 * Show backtracking steps
